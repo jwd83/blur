@@ -1,0 +1,147 @@
+:root {
+  --bg: #101215;
+  --panel: #171a20;
+  --panel-2: #20242c;
+  --text: #e8ecf3;
+  --muted: #a7b0c0;
+  --accent: #6ec8ff;
+  --border: #2e3440;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at top, #18212f 0%, var(--bg) 55%);
+  min-height: 100vh;
+}
+
+.app {
+  width: min(1100px, 100% - 2rem);
+  margin: 1.5rem auto 2rem;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(1.4rem, 2vw + 0.8rem, 2rem);
+}
+
+.subtitle {
+  margin: 0.4rem 0 1rem;
+  color: var(--muted);
+}
+
+.status {
+  margin: 0.7rem 0 0;
+  color: var(--muted);
+  min-height: 1.2em;
+}
+
+.status.error {
+  color: #ff9f9f;
+}
+
+.controls {
+  background: color-mix(in srgb, var(--panel) 90%, #fff 10%);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.85rem;
+  display: flex;
+  gap: 0.8rem;
+  align-items: end;
+  flex-wrap: wrap;
+}
+
+.control-group {
+  display: grid;
+  gap: 0.35rem;
+  min-width: 180px;
+}
+
+.control-group span {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+input,
+select,
+button {
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.55rem 0.7rem;
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.canvas-wrap {
+  margin-top: 1rem;
+  background: #0f1218;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  min-height: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: auto;
+}
+
+.canvas-stage {
+  display: none;
+  position: relative;
+  line-height: 0;
+}
+
+.canvas-stage.ready {
+  display: inline-block;
+}
+
+#imageCanvas,
+#overlayCanvas {
+  max-width: 100%;
+  height: auto;
+  image-rendering: auto;
+}
+
+#imageCanvas {
+  display: block;
+}
+
+#overlayCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: crosshair;
+  touch-action: none;
+}
+
+#placeholder {
+  color: var(--muted);
+  text-align: center;
+  padding: 1.2rem;
+}
+
+@media (max-width: 760px) {
+  .control-group {
+    min-width: 140px;
+    flex: 1;
+  }
+
+  .controls > button {
+    flex: 1;
+  }
+}

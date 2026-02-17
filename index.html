@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Redactor</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <h1>Image Redactor</h1>
+      <p class="subtitle">Upload or paste an image, drag to select an area, and apply blur or blackout.</p>
+
+      <section class="controls">
+        <label class="control-group">
+          <span>Image</span>
+          <input id="fileInput" type="file" accept="image/*" />
+        </label>
+
+        <label class="control-group">
+          <span>Tool</span>
+          <select id="toolSelect">
+            <option value="blur">Blur</option>
+            <option value="blackout">Blackout</option>
+          </select>
+        </label>
+
+        <label class="control-group" id="blurStrengthGroup">
+          <span>Blur Strength</span>
+          <input id="blurStrength" type="range" min="2" max="24" step="1" value="14" />
+        </label>
+
+        <button id="undoBtn" type="button" disabled>Undo</button>
+        <button id="resetBtn" type="button" disabled>Reset</button>
+        <button id="copyBtn" type="button" disabled>Copy</button>
+      </section>
+      <p id="statusMsg" class="status" aria-live="polite">Tip: press Ctrl+V (or Cmd+V) to paste an image.</p>
+
+      <section class="canvas-wrap" id="canvasWrap" aria-label="Image editor area">
+        <div class="canvas-stage" id="canvasStage">
+          <canvas id="imageCanvas"></canvas>
+          <canvas id="overlayCanvas"></canvas>
+        </div>
+        <p id="placeholder">Upload an image to start editing.</p>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
